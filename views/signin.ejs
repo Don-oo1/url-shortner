@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+</head>
+<body>
+    <h1>Signin</h1>
+
+    <form action="/user/signin" method="post">
+        <label>Enter Your Email</label>
+        <input type="text" name="email" required>
+        <label>Enter Your Password</label>
+        <input type="text" name="password" required>
+
+        <button type="submit">Signin</button>
+    </form>
+    <% if (locals.error) { %>
+     <p style="color: red;">Invalid Email or Password</p>
+    <% } %>
+    <br>
+    <div><a href="/signup">Not Have Account?</a></div>
+    
+</body>
+</html>

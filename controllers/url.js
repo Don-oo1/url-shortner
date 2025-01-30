@@ -3,23 +3,23 @@ const Url = require('../modules/url')
 
 async function  handleCreateShortId(req, res){
     const redirectUrl = req.body.redirectUrl
+
+    if( !redirectUrl || ( !redirectUrl.startsWith("http://") && !redirectUrl.startsWith("https://")) ){
+        return res.redirect(`/?incorrectURL=true`)
+    }
+
     const shortId = ids.generate()
 
     await Url.create({
         shortId:shortId,
         redirectUrl:redirectUrl,
         viewHistory:[],
+        createdBy:req.user._id
 
     })
-    const allUrls = await Url.find({})
-    const shortUrl = `${req.protocol}://${req.get('host')}/${shortId}`
-    return res.render("home",{
-        "shortId":shortId,
-        urls:allUrls,
-        shortUrl:shortUrl,
 
-    })
-    // return res.json({"short-id":shortId})
+    return res.redirect(`/?shortId=${shortId}`)
+
 
 }
 
