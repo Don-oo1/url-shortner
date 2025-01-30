@@ -17,7 +17,7 @@ app.use(cookieParser())
 
 const PORT =  8000
 
- const MONGO_URI = process.env.MONGO_URI ; 
+  const MONGO_URI = process.env.MONGO_URI ; 
 // const MONGO_URI = "mongodb://127.0.0.1:27017/url-1"
 connectMongoDb(MONGO_URI)
 .then(()=>{console.log("MongoDb Connected 🥳")})
