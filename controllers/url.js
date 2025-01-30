@@ -2,12 +2,12 @@ const ids = require('short-id');
 const Url = require('../modules/url')
 
 async function  handleCreateShortId(req, res){
-    const redirectUrl = req.body.redirectUrl
+    const redirectUrl = req.body.redirectUrl.trim()
 
     if( !redirectUrl || ( !redirectUrl.startsWith("http://") && !redirectUrl.startsWith("https://")) ){
         return res.redirect(`/?incorrectURL=true`)
     }
-
+    
     const shortId = ids.generate()
 
     await Url.create({
