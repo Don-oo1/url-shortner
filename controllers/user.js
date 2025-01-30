@@ -41,5 +41,10 @@ async function hendleUserSignIn(req, res){
 
 
 }
+ function handleUserSignOut(req, res){
 
-module.exports = {hendleUserSignUp, hendleUserSignIn }
+    res.clearCookie("tocken")
+    res.redirect("/")
+}
+
+module.exports = {hendleUserSignUp, hendleUserSignIn, handleUserSignOut }
